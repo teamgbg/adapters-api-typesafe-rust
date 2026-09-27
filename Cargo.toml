@@ -16,6 +16,7 @@ members = [
 ]
 
 [workspace.package]
+description = "Generated typesafe REST adapter runtime for the api-* adapter family"
 edition = "2021"
 publish = ["teamscala"]
 
