@@ -20,7 +20,7 @@ impl Client {
 	/// Create a new client with a bearer token.
 	pub fn new(base_url: &str, api_key: &str) -> Result<Self> {
 		let http = reqwest::Client::builder()
-			.timeout(std::time::Duration::from_secs(30))
+			.timeout(std::time::Duration::from_secs(45))
 			.build()?;
 		let auth = (
 			reqwest::header::AUTHORIZATION,
@@ -42,8 +42,8 @@ impl Client {
 	/// parameters, credential and body are assembled, so the typed, raw and
 	/// bytes surfaces below cannot disagree about what reaches the wire.
 	fn systemone_v1_systemone_post_request(&self, body: types::SystemoneV1SystemonePostPayload) -> Result<reqwest::RequestBuilder> {
-		let mut url = format!("{}/v1/systemone", self.base_url);
-		let mut query: Vec<(String, String)> = Vec::new();
+		let url = format!("{}/v1/systemone", self.base_url);
+		let query: Vec<(String, String)> = Vec::new();
 		let mut req = self.http.post(&url);
 		if !query.is_empty() {
 			req = req.query(&query);
@@ -100,8 +100,8 @@ impl Client {
 	/// parameters, credential and body are assembled, so the typed, raw and
 	/// bytes surfaces below cannot disagree about what reaches the wire.
 	fn models_v1_v1_models_get_request(&self) -> Result<reqwest::RequestBuilder> {
-		let mut url = format!("{}/v1/models", self.base_url);
-		let mut query: Vec<(String, String)> = Vec::new();
+		let url = format!("{}/v1/models", self.base_url);
+		let query: Vec<(String, String)> = Vec::new();
 		let mut req = self.http.get(&url);
 		if !query.is_empty() {
 			req = req.query(&query);
