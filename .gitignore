@@ -1,1 +1,15 @@
+# @system rust-adapters-api-typesafe
+# @status generated
+# @edit change registry input, then regenerate
+
+# Rust repository .gitignore.
+# /target is Cargo build output (never tracked). Cargo.lock is committed for
+# binary workspaces and deployable services so builds remain reproducible.
+
 /target
+**/target/
+
+# Editor / OS cache
+.scala-install.lock
+.DS_Store
+*.swp

@@ -1,0 +1,16 @@
+# @system cargo-deny
+# @status generated
+# @edit change this module, then regenerate
+
+# Fleet-wide bans, projected by the cargo-deny@1.0.0 codegen transform.
+# A banned crate is a PLATFORM RULE, never a per-repo decision: every build
+# here is a musl static-PIE image with no program interpreter, and a crate
+# that links OpenSSL leaves DT_NEEDED libssl/libcrypto with an unresolved GOT
+# slot, so the first TLS call jumps to address 0 and the process segfaults.
+# rustls is the only TLS this platform builds with. The gate is
+# `cargo deny check bans` at the workspace root.
+[bans]
+deny = [
+  { crate = "openssl-sys" },
+  { crate = "native-tls" },
+]
