@@ -9,6 +9,12 @@
 /target
 **/target/
 
+# The per-repo doc emission (repo_skills_dir on cli_routing) — the same entry
+# the publisher body carries, and the same reason it is scoped to
+# `repos-*/`: one directory per repo-owned doc, never a bare `.opencode/`
+# (which would hide this repo's own hand-written opencode files).
+.opencode/skills/repos-*/
+
 # Editor / OS cache
 .scala-install.lock
 .DS_Store
